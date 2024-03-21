@@ -1,4 +1,6 @@
 import pandas as pd
+import pickle
+import numpy as np
 import streamlit as st
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
@@ -27,10 +29,13 @@ y_train = df['Label']
 
 text_clf_logreg.fit(X_train, y_train)
 
+# Evaluate the model
+logreg_train_accuracy = text_clf_logreg.score(X_train, y_train)
+st.write("Logistic Regression Training Accuracy:", logreg_train_accuracy)
 # Create a text input for testing the model
-test_text = st.text_input("Enter a text for testing:", "")
+test_text = st.text_input("ใส่ข้อความทดสอบ:", "")
 
 # Predict the label for the test text
-if st.button("Test Model"):
+if st.button("ทดสอบโมเดล"):
     prediction = text_clf_logreg.predict([test_text])
-    st.write("Prediction:", prediction)
+    st.write("ผลการทดสอบ:", prediction)
