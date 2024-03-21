@@ -1,3 +1,4 @@
+pip install scikit-learn
 import pandas as pd
 import pickle
 import numpy as np
