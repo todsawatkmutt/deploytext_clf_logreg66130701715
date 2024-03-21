@@ -1,26 +1,17 @@
-from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
-from sklearn.naive_bayes import MultinomialNB
-from sklearn.pipeline import Pipeline
-from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+import streamlit as st
 
-# โหลดข้อมูล
-df = pd.read_csv('review_shopping.csv', header=None)
-df[['Review', 'Label']] = df[0].str.split('\t', expand=True)
-df = df.drop(columns=[0])
-
-# แบ่งข้อมูลเป็นชุดฝึกและชุดทดสอบ
-X_train, X_test, y_train, y_test = train_test_split(df['Review'], df['Label'], test_size=0.2, random_state=42)
-
-# สร้างและฝึกโมเดล Naive Bayes
-text_clf_nb = Pipeline([
-    ('vect', CountVectorizer()),  # เปลี่ยนข้อความให้เป็นตัวเลข
-    ('tfidf', TfidfTransformer()),  # ปรับน้ำหนักของคำ
-    ('clf', MultinomialNB())  # ใช้โมเดล Naive Bayes
+# สร้างและฝึกโมเดล Logistic Regression
+text_clf_logreg = Pipeline([
+    ('vect', CountVectorizer()),
+    ('tfidf', TfidfTransformer()),
+    ('clf', LogisticRegression(max_iter=1000))
 ])
 
-# ฝึกโมเดล
-text_clf_nb.fit(X_train, y_train)
+text_clf_logreg.fit(X_train, y_train)
 
-# ประเมินความแม่นยำของโมเดลบนชุดทดสอบ
-accuracy = text_clf_nb.score(X_test, y_test)
-print("Accuracy:", accuracy)
+# ประเมินประสิทธิภาพของโมเดล
+logreg_train_accuracy = text_clf_logreg.score(X_train, y_train)
+logreg_test_accuracy = text_clf_logreg.score(X_test, y_test)
+print("Logistic Regression Training Accuracy:", logreg_train_accuracy)
+print("Logistic Regression Test Accuracy:", logreg_test_accuracy)
