@@ -1,5 +1,5 @@
 from sklearn.linear_model import LogisticRegression
-
+import streamlit as st
 # สร้างและฝึกโมเดล Logistic Regression
 text_clf_logreg = Pipeline([
     ('vect', CountVectorizer()),
