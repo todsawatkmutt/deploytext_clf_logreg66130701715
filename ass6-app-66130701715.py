@@ -1,4 +1,3 @@
-pip install -r requirements1.txt
 import pandas as pd
 import pickle
 import numpy as np
