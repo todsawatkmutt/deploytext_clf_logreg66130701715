@@ -7,7 +7,6 @@ from sklearn.pipeline import Pipeline
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
 model = pickle.load(open('text_clf_logreg-66130701715.sav','rb'))
-uploaded_file = st.file_uploader("อัปโหลดไฟล์ CSV", type=["csv"])
 
 csv_url = "https://github.com/todsawatkmutt/deploytext_clf_logreg66130701715/blob/main/review_shopping.csv"
 
