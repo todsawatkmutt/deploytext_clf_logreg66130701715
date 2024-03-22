@@ -6,7 +6,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
-
+model = pickle.load(open('text_clf_logreg-66130701715.sav','rb'))
 # Load the data
 df = pd.read_csv('review_shopping.csv', header=None)
 
