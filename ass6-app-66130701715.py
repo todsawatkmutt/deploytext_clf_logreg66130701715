@@ -9,12 +9,13 @@ from sklearn.feature_extraction.text import TfidfTransformer
 model = pickle.load(open('text_clf_logreg-66130701715.sav','rb'))
 uploaded_file = st.file_uploader("อัปโหลดไฟล์ CSV", type=["csv"])
 
-# อ่านไฟล์ CSV เมื่อมีการอัปโหลดไฟล์
-if uploaded_file is not None:
-    # ใช้ pandas.read_csv() เพื่ออ่านไฟล์ CSV
-    df = pd.read_csv(uploaded_file)
-    # แสดงข้อมูลใน DataFrame ที่อ่านได้
-    st.write(df)
+csv_url = "URL_ของไฟล์_CSV"
+
+# โหลดข้อมูล CSV จาก URL
+df = pd.read_csv(csv_url)
+
+# แสดงข้อมูลใน DataFrame
+st.write(df)
 
 # Split the text and label columns
 df[['Review', 'Label']] = df[0].str.split('\t', expand=True)
