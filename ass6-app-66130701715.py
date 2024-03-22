@@ -9,7 +9,7 @@ from sklearn.feature_extraction.text import TfidfTransformer
 model = pickle.load(open('text_clf_logreg-66130701715.sav','rb'))
 uploaded_file = st.file_uploader("อัปโหลดไฟล์ CSV", type=["csv"])
 
-csv_url = "URL_ของไฟล์_CSV"
+csv_url = "https://github.com/todsawatkmutt/deploytext_clf_logreg66130701715/blob/main/review_shopping.csv"
 
 # โหลดข้อมูล CSV จาก URL
 df = pd.read_csv(csv_url)
